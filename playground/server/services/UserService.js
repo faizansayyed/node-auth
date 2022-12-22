@@ -29,6 +29,18 @@ class UserService {
   }
 
   /**
+   * Finds and returns a user by username or email exists
+   *
+   * @param {*} username
+   * @param {*} email
+   * @returns database result
+   */
+  static async findByUsernameOrEmail(username, email) {
+    // throw new Error('Not implemented');
+    return UserModel.findOne({ $or: [{ username }, { email }] }).exec();
+  }
+
+  /**
    * Creates a new user
    *
    * @param {*} username

@@ -40,12 +40,12 @@ module.exports = () => {
             });
           });
         } else {
-          const existingEmail = await UserService.findByEmail(req.body.email);
-          const existingUsername = await UserService.findByUsername(
-            req.body.username
+          const existingUser = await UserService.findByUsernameOrEmail(
+            req.body.username,
+            req.body.email
           );
 
-          if (existingEmail || existingUsername) {
+          if (existingUser) {
             errors.push('email');
             errors.push('username');
             req.session.messages.push({
