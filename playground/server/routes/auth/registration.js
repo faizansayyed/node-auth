@@ -45,6 +45,8 @@ module.exports = () => {
             req.body.email
           );
 
+          console.log({existingUser})
+
           if (existingUser) {
             errors.push('email');
             errors.push('username');
